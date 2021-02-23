@@ -7,22 +7,23 @@ syn case ignore
 
 com! -nargs=+ HiLink hi def link <args>
 
-syn keyword ucProvisionDirective contained containedin=ucDirective INSTALL COPY SYMLINK WEB GIT SOURCE
+syn keyword ucProvisionDirective contained containedin=ucDirective INSTALL COPY SYMLINK WEB GIT LINE SH BASH DIR
 syn keyword ucMetaDirective contained containedin=ucDirective BASE BIN
-syn keyword ucExecDirective contained containedin=ucDirective SOURCE AGE ENV SH BASH
+syn keyword ucExecDirective contained containedin=ucDirective INCLUDE AGE ENV ENV-SH
 
-syn keyword ucInstaller containedin=ucParam apt brew pip opkg
+syn keyword ucInstaller containedin=ucParam apt brew pip opkg *
 
 syn match ucParam "[^\ ]\+" contained contains=ucInstaller,ucVar
 syn match ucDecorator '[*?]' contained
-syn match ucVar "\$[A-Za-z_]\+" contained
-syn match ucDirective "^[A-Za-z_]\+[*?]*\ " containedin=ucFileDirective
+syn match ucVar "\$[A-Za-z-]\+" contained
+syn match ucDirective "^ *[A-Za-z-]\+[*?]*\ " containedin=ucFileDirective
+syn match ucTag "@[A-Za-z-]\+"
+syn match ucGroup "[{}]"
+"syn region ucGroupBlock start="{" end="}" transparent contains=TOP
 
-syn region ucFileDirective start="^[A-Za-z_]\+[*?]*\ " end="\n" contains=ucDirective,ucDecorator,ucParam
+syn region ucFileDirective start="^ *[A-Za-z-]\+[*?]*\ " end="\n" contains=ucDirective,ucDecorator,ucParam
 
 syn keyword etTodo TODO FIXME XXX NOTE
-
-syn case match
 
 syn match unixComment "#.\{-}$" contains=etTodo,@Spell
 
@@ -39,8 +40,11 @@ HiLink ucKeyword Keyword
 HiLink ucOperator Operator
 HiLink ucSpecialChar SpecialChar
 HiLink ucSpecial Special
+HiLink ucTag Statement
+HiLink ucGroup  SpecialChar
 
 HiLink unixComment Comment
 
 delcommand HiLink
 
+syn case match
