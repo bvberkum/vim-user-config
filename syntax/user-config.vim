@@ -15,9 +15,9 @@ syn keyword ucInstaller containedin=ucParam apt brew pip opkg *
 
 syn match ucParam "[^\ ]\+" contained contains=ucInstaller,ucVar
 syn match ucDecorator '[*?]' contained
-syn match ucVar "\$[A-Za-z-]\+" contained
+syn match ucVar "\$[A-Za-z_]\+" contained
 syn match ucDirective "^ *[A-Za-z-]\+[*?]*\ " containedin=ucFileDirective
-syn match ucTag "@[A-Za-z-]\+"
+syn match ucTag "@[A-Za-z\._-]\+"
 syn match ucGroup "[{}]"
 "syn region ucGroupBlock start="{" end="}" transparent contains=TOP
 
