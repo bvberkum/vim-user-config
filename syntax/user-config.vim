@@ -7,7 +7,7 @@ syn case ignore
 
 com! -nargs=+ HiLink hi def link <args>
 
-syn keyword ucProvisionDirective contained containedin=ucDirective INSTALL COPY SYMLINK WEB GIT LINE SH BASH DIR
+syn keyword ucProvisionDirective contained containedin=ucDirective INSTALL COPY SYMLINK WEB GIT LINE SH BASH DIR FILE
 syn keyword ucMetaDirective contained containedin=ucDirective BASE BIN
 syn keyword ucExecDirective contained containedin=ucDirective INCLUDE AGE ENV ENV-SH
 
